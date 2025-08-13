@@ -4,7 +4,7 @@ from pydantic import BaseModel
 import os
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from langchain_pinecone import Pinecone
+from langchain_pinecone import PineconeVectorStore
 from langchain_openai.embeddings import OpenAIEmbeddings
 from langchain_core.runnables import RunnablePassthrough
 from langchain_openai.chat_models import ChatOpenAI
@@ -38,7 +38,7 @@ model = ChatOpenAI(openai_api_key=OPENAI_API_KEY, model="gpt-4o")
 # Vector store
 index_name = "events-qa-index"
 
-vectorstore = Pinecone(
+vectorstore = PineconeVectorStore(
     index_name=index_name,
     embedding=OpenAIEmbeddings(),
 )
